@@ -30,7 +30,7 @@ namespace Shiftless.Clockwork.Assets.Editor
         public static string SourceDirectory => Context.SourceDirectory;
         public static string OutputDirectory => Context.OutputDirectory;
 
-        public static string SaveFilePath => Path.Combine(SourceDirectory, "content.cwat");
+        public static string SaveFilePath => Path.Combine(SourceDirectory, "assets.cwat");
 
         public static bool IsActive => _instance != null;
 

@@ -151,7 +151,7 @@ namespace Shiftless.Clockwork.Assets.Editor.AssetManagement
 
             foreach (AssetHandle handle in _assets.Values)
             {
-                writer.Write(handle.SourcePath);
+                writer.Write(handle.LocalPath);
                 writer.Write(handle.Name);
                 writer.Write(handle.Settings.Serialize());
             }
@@ -169,7 +169,7 @@ namespace Shiftless.Clockwork.Assets.Editor.AssetManagement
 
             while (!stream.IsAtEnd)
             {
-                string path = stream.ReadString();
+                string path = Path.Combine(Project.SourceDirectory, stream.ReadString());
                 string name = stream.ReadString();
 
                 if (!Project.Context.TryGetAssetBuilder(path, out AssetBuilder? builder))

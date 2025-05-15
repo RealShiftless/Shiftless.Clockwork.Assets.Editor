@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Shiftless.Clockwork.Assets.Editor.AssetManagement.Sorting
+﻿namespace Shiftless.Clockwork.Assets.Editor.AssetManagement.Sorting
 {
     public sealed class AlphabeticTreeSorter : IAssetTreeSorter
     {

@@ -1,10 +1,7 @@
 ﻿using Shiftless.Clockwork.Assets.Editor.AssetManagement.Builders;
 using Shiftless.Clockwork.Assets.Editor.Exceptions;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using System.Text.RegularExpressions;
 
 namespace Shiftless.Clockwork.Assets.Editor
 {
@@ -40,7 +37,7 @@ namespace Shiftless.Clockwork.Assets.Editor
             string[] extensions = assetHandler.FileExtensionPattern.Split('|');
             foreach (string extension in extensions)
             {
-                if(TryGetAssetBuilder(extension, out AssetBuilder? builder))
+                if (TryGetAssetBuilder(extension, out AssetBuilder? builder))
                     throw new InvalidOperationException($"Assets of type {extension} was already handled by {builder.GetType().Name}!");
             }
 
@@ -62,7 +59,7 @@ namespace Shiftless.Clockwork.Assets.Editor
                 return true;
 
             }
-            catch(UnhandledFileException)
+            catch (UnhandledFileException)
             {
                 builder = null;
                 return false;

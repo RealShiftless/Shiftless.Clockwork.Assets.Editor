@@ -1,12 +1,7 @@
 ﻿using Shiftless.Clockwork.Assets.Editor.AssetManagement.Builders;
 using Shiftless.Clockwork.Assets.Editor.Exceptions;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Shiftless.Clockwork.Assets.Editor.AssetManagement
 {
@@ -79,7 +74,7 @@ namespace Shiftless.Clockwork.Assets.Editor.AssetManagement
 
         public static bool ExcludeDirectory(string path)
         {
-            if(!path.EndsWith(Path.DirectorySeparatorChar))
+            if (!path.EndsWith(Path.DirectorySeparatorChar))
                 path += Path.DirectorySeparatorChar;
 
             return _exclusionRegex.IsMatch(path);

@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows.Controls;
 
 namespace Shiftless.Clockwork.Assets.Editor.UserControls.Settings
 {
@@ -23,7 +10,7 @@ namespace Shiftless.Clockwork.Assets.Editor.UserControls.Settings
         // Events
         public event Action<object>? ValueChanged;
 
-        
+
         // Constructor
         public EnumControl()
         {
@@ -42,9 +29,9 @@ namespace Shiftless.Clockwork.Assets.Editor.UserControls.Settings
             Body.Items.Clear();
 
             int i = 0;
-            foreach(Enum enumValue in Enum.GetValues(value.GetType()))
+            foreach (Enum enumValue in Enum.GetValues(value.GetType()))
             {
-                if(Equals(enumValue, value))
+                if (Equals(enumValue, value))
                     Body.SelectedIndex = i;
 
                 Body.Items.Add(enumValue);

@@ -1,12 +1,6 @@
 ﻿using Shiftless.Clockwork.Assets.Editor.AssetManagement.Builders;
 using Shiftless.Clockwork.Assets.Editor.AssetManagement.Settings;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Markup;
 
 namespace Shiftless.Clockwork.Assets.Editor.AssetManagement
 {

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.PortableExecutable;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections;
 
 namespace Shiftless.Clockwork.Assets.Editor.AssetManagement
 {
@@ -41,15 +35,15 @@ namespace Shiftless.Clockwork.Assets.Editor.AssetManagement
 
             public AssetHandle GetCurrent()
             {
-                if(Child != null)
+                if (Child != null)
                     return Child.GetCurrent();
 
-                return ((AssetTreeFile) Directory.Children[Offset]).Handle;
+                return ((AssetTreeFile)Directory.Children[Offset]).Handle;
             }
 
             public bool MoveNext()
             {
-                if(Child != null )
+                if (Child != null)
                 {
                     if (Child.MoveNext())
                         return true;
@@ -64,8 +58,8 @@ namespace Shiftless.Clockwork.Assets.Editor.AssetManagement
 
                 AssetTreeNode node = Directory.Children[Offset];
 
-                if(node is IAssetTreeDirectory directory)
-                { 
+                if (node is IAssetTreeDirectory directory)
+                {
                     Child = new(directory);
                     return MoveNext();
                 }
@@ -73,5 +67,5 @@ namespace Shiftless.Clockwork.Assets.Editor.AssetManagement
                 return true;
             }
         }
-    } 
+    }
 }

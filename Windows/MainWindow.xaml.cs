@@ -3,20 +3,10 @@ using Shiftless.Clockwork.Assets.Editor.AssetManagement;
 using Shiftless.Clockwork.Assets.Editor.AssetManagement.Builders;
 using Shiftless.Clockwork.Assets.Editor.AssetManagement.Sorting;
 using Shiftless.Clockwork.Assets.Editor.UserControls.Settings;
-using System.Diagnostics;
 using System.IO;
-using System.Numerics;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Interop;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 
 namespace Shiftless.Clockwork.Assets.Editor
 {
@@ -36,7 +26,7 @@ namespace Shiftless.Clockwork.Assets.Editor
             {
                 _project = value;
 
-                if(_project == null)
+                if (_project == null)
                     SaveMenuItem.IsEnabled = false;
                 else
                     SaveMenuItem.IsEnabled = true;
@@ -51,7 +41,7 @@ namespace Shiftless.Clockwork.Assets.Editor
 
             string[] args = Environment.GetCommandLineArgs();
             string? dir = null;
-            foreach( string arg in args )
+            foreach (string arg in args)
             {
                 if (!arg.EndsWith(".cwat"))
                     continue;
@@ -84,7 +74,7 @@ namespace Shiftless.Clockwork.Assets.Editor
             TreeViewItem root = Project.Assets.BuildTreeUi();
             root.IsExpanded = true;
 
-            if(DirectoryView.Items.Count > 0)
+            if (DirectoryView.Items.Count > 0)
                 CheckExpanded((TreeViewItem)DirectoryView.Items[0], root);
 
             DirectoryView.Items.Clear();
@@ -98,7 +88,7 @@ namespace Shiftless.Clockwork.Assets.Editor
             {
                 TreeViewItem oldItem = (TreeViewItem)old.Items[i];
 
-                for(int j = 0; j < next.Items.Count; j++)
+                for (int j = 0; j < next.Items.Count; j++)
                 {
                     TreeViewItem nextItem = (TreeViewItem)next.Items[j];
 
@@ -147,7 +137,7 @@ namespace Shiftless.Clockwork.Assets.Editor
 
             NameTextBlock.Text = file.Handle.Name;
 
-            if(panel != null)
+            if (panel != null)
             {
                 panel.Bind(file.Handle.Settings);
                 SettingsBody.Child = panel;
@@ -163,7 +153,7 @@ namespace Shiftless.Clockwork.Assets.Editor
 
         private void Window_StateChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void Build_Click(object sender, RoutedEventArgs e)
@@ -181,7 +171,7 @@ namespace Shiftless.Clockwork.Assets.Editor
                 string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
                 foreach (string file in files)
                 {
-                    if(!Project.Context.TryGetAssetBuilder(file, out AssetBuilder? builder))
+                    if (!Project.Context.TryGetAssetBuilder(file, out AssetBuilder? builder))
                     {
                         FileConsole.WriteLine("Could not import file: " + file + ", no builder was found!");
                         continue;
@@ -192,7 +182,7 @@ namespace Shiftless.Clockwork.Assets.Editor
                     string fullPath = AssetUtils.GetFullPath(localPath);
                     string directory = Path.GetDirectoryName(fullPath) ?? throw new Exception("Asset directory name null?!");
 
-                    if(File.Exists(fullPath))
+                    if (File.Exists(fullPath))
                     {
                         FileConsole.WriteLine($"Asset of name {localPath} already exists!");
                         continue;
@@ -226,7 +216,7 @@ namespace Shiftless.Clockwork.Assets.Editor
 
             if (Project != null)
             {
-                switch(MessageBox.Show("Save Project?", "", MessageBoxButton.YesNoCancel))
+                switch (MessageBox.Show("Save Project?", "", MessageBoxButton.YesNoCancel))
                 {
                     case MessageBoxResult.Yes:
                         Project.Save();
@@ -329,9 +319,9 @@ namespace Shiftless.Clockwork.Assets.Editor
         {
             if (e.ChangedButton == MouseButton.Left)
             {
-                DragMove(); 
+                DragMove();
             }
-            
+
         }
     }
 }

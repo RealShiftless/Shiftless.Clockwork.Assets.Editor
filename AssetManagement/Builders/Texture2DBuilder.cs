@@ -1,15 +1,7 @@
-﻿using Shiftless.Common.Serialization;
-using Shiftless.Clockwork.Assets.Editor.AssetManagement.Settings;
-using Shiftless.Clockwork.Assets.Editor.AssetManagement.Settings.Enums;
+﻿using Shiftless.Clockwork.Assets.Editor.AssetManagement.Settings;
+using Shiftless.Common.Serialization;
 using StbImageSharp;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
-using static Shiftless.Clockwork.Assets.Editor.AssetManagement.Settings.AssetSettings;
 
 namespace Shiftless.Clockwork.Assets.Editor.AssetManagement.Builders
 {
@@ -42,7 +34,7 @@ namespace Shiftless.Clockwork.Assets.Editor.AssetManagement.Builders
 
         public override (long, long) Encode(string path, string output, AssetSettings assetSettings)
         {
-            if(assetSettings is not Texture2DSettings settings)
+            if (assetSettings is not Texture2DSettings settings)
                 throw new ArgumentException("assetSettings was not of type Texture2DSettings");
 
             using var stream = File.OpenRead(path);
@@ -57,7 +49,7 @@ namespace Shiftless.Clockwork.Assets.Editor.AssetManagement.Builders
             writer.Write((uint)image.Height);
             writer.Write((int)colorMode);
 
-            if(colorMode >= ColorMode.Palette1 && colorMode <= ColorMode.Palette8 && settings.StoresPalette)
+            if (colorMode >= ColorMode.Palette1 && colorMode <= ColorMode.Palette8 && settings.StoresPalette)
             {
                 if (settings.AutoPalette)
                     throw new NotImplementedException("Auto palette not implemented!");
@@ -67,7 +59,7 @@ namespace Shiftless.Clockwork.Assets.Editor.AssetManagement.Builders
                 int offset = colorMode - ColorMode.Palette1;
                 int colors = 1 << (offset << 1);
 
-                for(int i = 0; i < colors; i++)
+                for (int i = 0; i < colors; i++)
                 {
                     writer.Write(settings.Get<Mathematics.Color>($"palette_{i}"));
                 }
@@ -147,9 +139,9 @@ namespace Shiftless.Clockwork.Assets.Editor.AssetManagement.Builders
 
             if (isTileset && (image.Width % tileWidth != 0 || image.Height != tileHeight))
                 throw new Exception("Tileset sizing was incorrect!");
-            
 
-            for(int i = 0; i < image.Data.Length / components; i++)
+
+            for (int i = 0; i < image.Data.Length / components; i++)
             {
                 int index = CalculatePixelIndex(i, isTileset, image.Width, image.Height, tileWidth, tileHeight, settings.FlipY);
 
@@ -353,7 +345,7 @@ namespace Shiftless.Clockwork.Assets.Editor.AssetManagement.Builders
             int pixelY = tileY * tileHeight + localY;
             return pixelY * width + pixelX;
         }
-        
+
         private static void EncodeBits(ByteWriter writer, Texture2DSettings settings, ImageResult image, PixelsPerByte ppb)
         {
             int pixelsPerByte = (int)ppb;

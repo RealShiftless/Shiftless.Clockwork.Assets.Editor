@@ -1,11 +1,4 @@
-﻿using Shiftless.Clockwork.Assets.Editor.AssetManagement.Settings.Enums;
-using Shiftless.Clockwork.Assets.Editor.Mathematics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media.Animation;
+﻿using Shiftless.Clockwork.Assets.Editor.Mathematics;
 
 namespace Shiftless.Clockwork.Assets.Editor.AssetManagement.Settings
 {
@@ -45,7 +38,7 @@ namespace Shiftless.Clockwork.Assets.Editor.AssetManagement.Settings
                 return colorMode >= ColorMode.Palette1 && colorMode <= ColorMode.Palette8 && StoresPalette;
             });
 
-            
+
 
             for (byte i = 0; i < byte.MaxValue; i++)
             {

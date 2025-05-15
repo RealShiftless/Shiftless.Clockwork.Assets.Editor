@@ -1,19 +1,6 @@
 ﻿using Shiftless.Clockwork.Assets.Editor.AssetManagement.Settings;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Shiftless.Clockwork.Assets.Editor.UserControls.Settings
 {
@@ -30,11 +17,11 @@ namespace Shiftless.Clockwork.Assets.Editor.UserControls.Settings
         {
             InitializeComponent();
 
-            foreach((string name, AssetSettings.Setting setting) in settings)
+            foreach ((string name, AssetSettings.Setting setting) in settings)
             {
                 ISettingControl controlInterface = setting.CreateElement();
                 SettingControl control = new(name, controlInterface);
-                
+
                 Body.Children.Add(control);
 
                 _settings.Add(name, control);
@@ -67,9 +54,9 @@ namespace Shiftless.Clockwork.Assets.Editor.UserControls.Settings
 
         private void CheckSettingsVisible()
         {
-            if(_current == null) return;
+            if (_current == null) return;
 
-            foreach((string name, SettingControl settingControl) in _settings)
+            foreach ((string name, SettingControl settingControl) in _settings)
                 settingControl.Visibility = _current.IsSettingVisible(name) ? Visibility.Visible : Visibility.Collapsed;
         }
     }

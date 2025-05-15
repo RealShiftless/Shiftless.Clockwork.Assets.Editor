@@ -1,13 +1,5 @@
-﻿using Shiftless.Common.Serialization;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.Collections;
 using System.Reflection;
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace Shiftless.Clockwork.Assets.Editor.AssetManagement
@@ -32,7 +24,7 @@ namespace Shiftless.Clockwork.Assets.Editor.AssetManagement
             _properties = [];
             PropertyInfo[] properties = obj.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
-            foreach(PropertyInfo property in properties)
+            foreach (PropertyInfo property in properties)
                 _properties.Add(property.Name, property.GetValue(obj) ?? "null");
 
             FieldInfo[] fields = obj.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance);
@@ -44,7 +36,7 @@ namespace Shiftless.Clockwork.Assets.Editor.AssetManagement
         public StackPanel GetPanel()
         {
             StackPanel panel = new StackPanel();
-            foreach((string name, object value) in _properties)
+            foreach ((string name, object value) in _properties)
             {
                 StackPanel propPanel = new()
                 {

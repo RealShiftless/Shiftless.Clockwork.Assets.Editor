@@ -1,10 +1,5 @@
-﻿using Shiftless.Common.Serialization;
-using Shiftless.Clockwork.Assets.Editor.UserControls.Settings;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Shiftless.Clockwork.Assets.Editor.UserControls.Settings;
+using Shiftless.Common.Serialization;
 
 namespace Shiftless.Clockwork.Assets.Editor.AssetManagement.Settings
 {
@@ -12,8 +7,8 @@ namespace Shiftless.Clockwork.Assets.Editor.AssetManagement.Settings
     {
         private bool _value = value;
 
-        public override object Value 
-        { 
+        public override object Value
+        {
             get => _value;
             set
             {

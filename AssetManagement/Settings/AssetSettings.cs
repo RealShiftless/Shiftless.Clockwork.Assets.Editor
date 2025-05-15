@@ -1,14 +1,7 @@
-﻿using Shiftless.Common.Serialization;
-using Shiftless.Clockwork.Assets.Editor.Mathematics;
+﻿using Shiftless.Clockwork.Assets.Editor.Mathematics;
 using Shiftless.Clockwork.Assets.Editor.UserControls.Settings;
-using System;
+using Shiftless.Common.Serialization;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
 
 namespace Shiftless.Clockwork.Assets.Editor.AssetManagement.Settings
 {
@@ -53,7 +46,7 @@ namespace Shiftless.Clockwork.Assets.Editor.AssetManagement.Settings
         }
 
         protected void AddSetting(string name, int value, Func<bool>? isVisibleFunc = null) => AddSetting(name, new Int32Setting(value), isVisibleFunc);
-        protected void AddSetting<T>(string name, T value, Func<bool>? isVisibleFunc = null) where T: Enum => AddSetting(name, new EnumSetting<T>(value), isVisibleFunc);
+        protected void AddSetting<T>(string name, T value, Func<bool>? isVisibleFunc = null) where T : Enum => AddSetting(name, new EnumSetting<T>(value), isVisibleFunc);
         protected void AddSetting(string name, bool value, Func<bool>? isVisibleFunc = null) => AddSetting(name, new BoolSetting(value), isVisibleFunc);
         protected void AddSetting(string name, Color value, Func<bool>? isVisibleFunc = null) => AddSetting(name, new ColorSetting(value), isVisibleFunc);
 
@@ -67,7 +60,7 @@ namespace Shiftless.Clockwork.Assets.Editor.AssetManagement.Settings
         public byte[] Serialize()
         {
             ByteWriter writer = new ByteWriter();
-            foreach((string name, Setting setting) in _settings)
+            foreach ((string name, Setting setting) in _settings)
             {
                 writer.Write(name);
                 writer.Write(setting.Serialize());
@@ -81,7 +74,7 @@ namespace Shiftless.Clockwork.Assets.Editor.AssetManagement.Settings
 
         public void Deserialize(ByteStream stream)
         {
-            while(stream.Peek() != 0)
+            while (stream.Peek() != 0)
             {
                 string name = stream.ReadString();
 

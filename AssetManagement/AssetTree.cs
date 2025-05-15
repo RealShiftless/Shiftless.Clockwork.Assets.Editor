@@ -1,11 +1,10 @@
-﻿using Shiftless.Common.Serialization;
-using Shiftless.Clockwork.Assets.Editor.AssetManagement.Builders;
+﻿using Shiftless.Clockwork.Assets.Editor.AssetManagement.Builders;
 using Shiftless.Clockwork.Assets.Editor.AssetManagement.Settings;
 using Shiftless.Clockwork.Assets.Editor.AssetManagement.Sorting;
 using Shiftless.Clockwork.Assets.Editor.Exceptions;
+using Shiftless.Common.Serialization;
 using System.Collections;
 using System.IO;
-using System.Text;
 using System.Windows.Controls;
 
 namespace Shiftless.Clockwork.Assets.Editor.AssetManagement
@@ -70,7 +69,7 @@ namespace Shiftless.Clockwork.Assets.Editor.AssetManagement
 
             // Remove directories that dont exist no more
             Queue<AssetTreeDirectory> removalQueue = new Queue<AssetTreeDirectory>();
-            foreach(AssetTreeDirectory child in _children)
+            foreach (AssetTreeDirectory child in _children)
             {
                 if (Directory.Exists(child.SourcePath))
                     continue;
@@ -430,7 +429,7 @@ namespace Shiftless.Clockwork.Assets.Editor.AssetManagement
             foreach (AssetTreeDirectory directory in GetDirectories())
                 directory.Dispose();
 
-            while(Children.Count > 0)
+            while (Children.Count > 0)
                 RemoveChild(Children[0]);
         }
     }

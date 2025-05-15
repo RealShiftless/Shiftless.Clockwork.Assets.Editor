@@ -1,7 +1,7 @@
-﻿using Shiftless.Common.Serialization;
-using Shiftless.Clockwork.Assets.Editor.AssetManagement;
+﻿using Shiftless.Clockwork.Assets.Editor.AssetManagement;
 using Shiftless.Clockwork.Assets.Editor.AssetManagement.Builders;
 using Shiftless.Clockwork.Assets.Editor.UserControls;
+using Shiftless.Common.Serialization;
 using System.Diagnostics;
 using System.IO;
 
@@ -68,7 +68,7 @@ namespace Shiftless.Clockwork.Assets.Editor
             Console.WriteLine("Building project...");
 
             Stopwatch sw = Stopwatch.StartNew();
-            foreach(AssetHandle asset in _assets)
+            foreach (AssetHandle asset in _assets)
             {
                 if (!asset.IsSourceNewer())
                 {
@@ -112,7 +112,7 @@ namespace Shiftless.Clockwork.Assets.Editor
             // Now we get all directories and check if they're empty
             string[] directories = Directory.GetDirectories(_context.OutputDirectory, "*", SearchOption.AllDirectories);
 
-            foreach(string directory in directories)
+            foreach (string directory in directories)
             {
                 if (!Directory.Exists(directory))
                     continue;

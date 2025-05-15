@@ -1,15 +1,9 @@
-﻿using Shiftless.Common.Serialization;
-using Shiftless.Clockwork.Assets.Editor.AssetManagement.Settings;
+﻿using Shiftless.Clockwork.Assets.Editor.AssetManagement.Settings;
 using Shiftless.Clockwork.Assets.Editor.Audio;
+using Shiftless.Common.Serialization;
 using Shiftless.SexyAudioFormat;
 using Shiftless.SexyAudioFormat.Serialization;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Shiftless.Clockwork.Assets.Editor.AssetManagement.Builders
 {
